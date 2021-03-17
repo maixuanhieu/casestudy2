@@ -39,4 +39,29 @@ class Category{
         $category->name = $rawData["name"];
         return $category;
     }
+
+    public function save() {
+        $sql = "INSERT INTO categories(
+             name
+            )
+            VALUES(?)
+            ON DUPLICATE KEY UPDATE    
+            name=?
+        ";
+
+        $smpt = DB::getInstance()->prepare($sql);
+        return $smpt->execute([
+
+            $this->name,
+
+          
+            $this->name,
+        ]);
+    }
+
+        public function destroy() {
+            $db = DB::getInstance();
+            $req = $db->prepare("DELETE FROM categories WHERE id = $this->id");
+            $req->execute();
+    }
 }

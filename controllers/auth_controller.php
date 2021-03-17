@@ -24,7 +24,7 @@ class AuthController extends BaseController {
 
 
             // Điều hướng về trang đăng nhập
-            header("Location:?controller=auth&action=login");
+            header("Location:?controller=home&action=welcome");
         }
     }
 

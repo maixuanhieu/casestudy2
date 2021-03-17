@@ -16,9 +16,6 @@ class ProductsController extends BaseController{
          
         $this->render('index', $viewData);
     }
-    // public function getCategory($id){
-    //     return Category::find($id);
-    // }
 
     public function create() {
         // Kiểm tra nếu request method là POST thì lưu data
@@ -140,5 +137,5 @@ class ProductsController extends BaseController{
         $this->render('create', $viewData);
     }
 
-    
+        
 }

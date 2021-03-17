@@ -204,7 +204,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="?controller=shop&action=index" <?php if (isset($_SESSION[AUTH_KEY])) {
                                                                                                         echo 'hidden';
-                                                                                                    } ?>>Checkout</a>
+                                                                                                    } ?>>Your Cart</a>
                     </li>
 
                     <!-- <li class="nav-item">
@@ -426,3 +426,4 @@
         </footer>
     </div>
 </div>
+
