@@ -12,15 +12,15 @@
 
 <body>
   <!-- APPLICATION HEADER -->
-  <!-- <nav class="navbar navbar-light bg-light justify-content-between">
+  <nav class="navbar navbar-light bg-light justify-content-between" <?php if (!isset($_SESSION[AUTH_KEY])) {
+                                                                                                        echo 'hidden';
+                                                                                                    } ?>>
     <a class="navbar-brand" href="?controller=home&action=welcome">
       <div class="app-logo">
         <img src="/Image/s1team-re.jpg" alt="" />
       </div>
       <?php
       require_once("models/user.php");
-
-      // echo User::getAuthUser()->first_name;
       ?>
     </a>
 
@@ -37,8 +37,11 @@
         <a class="nav-link <?php showActive("categories") ?>" href="?controller=categories&action=index"> Categories </a>
       </li>
     </ul>
+
+    <form action="?controller=auth&action=logOut" method="POST">
+      <a class="nav-link" onclick="confirm('Do you want to log out?') && this.parentNode.submit();" href="?controller=auth&action=logOut">LOG OUT</a>
     </form>
-  </nav> -->
+  </nav>
   <!-- END APPLICATION HEADER -->
   <div class="container-fluid mt-3">
     <?php echo $content; ?>

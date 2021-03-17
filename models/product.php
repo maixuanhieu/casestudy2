@@ -7,8 +7,10 @@ class Product
     public $price;
     public $quantity;
     public $description;
-    public $category;
     public $category_id;
+    public $image_url;
+
+    // public $category;
 
     // Trả về mảng các đối tượng Product
     static function all()
@@ -41,8 +43,9 @@ class Product
             $entity->price = $row["price"];
             $entity->quantity = $row["quantity"];
             $entity->description = $row["description"];
-            $entity->category = $row["category"];
             $entity->category_id = $row["category_id"];
+            $entity->category = $row["category"];
+            $entity->image_url = $row["image_url"];
 
             $list[] = $entity;
         }
@@ -61,15 +64,15 @@ class Product
         $smpt->execute();
 
         $rawData = $smpt->fetch();
-
+       
         $product = new Product();
         $product->id = $rawData["id"];
         $product->name = $rawData["name"];
         $product->price = $rawData["price"];
         $product->quantity = $rawData["quantity"];
         $product->description = $rawData["description"];
-        $product->category = $rawData["category"];
         $product->category_id = $rawData["category_id"];
+        $product->image_url = $rawData["image_url"];
 
 
         return $product;
@@ -81,41 +84,41 @@ class Product
 
     public function save()
     {
-        $sql = "INSERT INTO products(id, name, price, quantity, description, category, category_id)
-        VALUES(?, ?, ?, ?, ?, ?, ?)
+        $sql = "INSERT INTO products(name, price, quantity, description, category_id, image_url)
+        VALUES(?, ?, ?, ?, ?, ?)
         ON DUPLICATE KEY UPDATE
         name=?,
         price=?,
         quantity=?,
         description=?,
-        category=?,
-        category_id=?
+        category_id=?,
+        image_url=?
     
     ";
-
+    // var_dump($sql);die();
         $smpt = DB::getInstance()->prepare($sql);
         return $smpt->execute([
-            $this->id,
-            $this->name,
-            $this->price,
-            $this->quantity,
-            $this->description,
-            $this->category,
-            $this->category_id,
 
-            $this->id,
             $this->name,
             $this->price,
             $this->quantity,
             $this->description,
-            $this->category,
             $this->category_id,
+            $this->image_url,
+
+ 
+            $this->name,
+            $this->price,
+            $this->quantity,
+            $this->description,
+            $this->category_id,
+            $this->image_url,
         ]);
     }
 
     public function destroy(){
         $db = DB ::getInstance();
-        $req = $db->prepare('DELETE FROM products WHERE id = $this->id ');
+        $req = $db->prepare("DELETE FROM products WHERE id = $this->id");
         $req->execute();
     }
 }

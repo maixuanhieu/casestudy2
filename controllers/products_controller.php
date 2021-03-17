@@ -13,9 +13,12 @@ class ProductsController extends BaseController{
     
         $data = Product::all();
         $viewData = array("products" => $data);
+         
         $this->render('index', $viewData);
-
     }
+    // public function getCategory($id){
+    //     return Category::find($id);
+    // }
 
     public function create() {
         // Kiểm tra nếu request method là POST thì lưu data
@@ -39,7 +42,7 @@ class ProductsController extends BaseController{
         }
     }
 
-    public function post(){
+    public function delete(){
         
         if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Lấy được id phần tử từ URL
@@ -59,17 +62,18 @@ class ProductsController extends BaseController{
     protected function showEditPage(){
         // Lấy id sản phẩm 
         $id = $_GET["id"];
+      
 
         // Lấy thông tin sản phẩm
         $product = Product::find($id);
         $categories = Category::all();
-
+ 
         $viewData = array(
             "product" => $product,
             "categories" => $categories
         );
 
-        $this->render('edit');
+        $this->render('edit',$viewData);
     }
 
     protected function updateProduct(){
@@ -85,9 +89,9 @@ class ProductsController extends BaseController{
         $product->name = $_POST["name"];
         $product->price = $_POST["price"];
         $product->quantity = $_POST["quantity"];
-        $product->descrition = $_POST["description"];
-        $product->category = $_POST["category"];
+        $product->description = $_POST["description"];
         $product->category_id = $_POST["category_id"];
+        $product->image_url = $_POST["image_url"];
 
         $storedSuccessful = $product->save();
 
@@ -105,8 +109,8 @@ class ProductsController extends BaseController{
         $price = $_POST["price"];
         $quantity = $_POST["quantity"];
         $description = $_POST["description"];
-        $category = $_POST["category"];
         $category_id = $_POST["category_id"];
+        $image_url = $_POST["image_url"];
 
 
         // Khởi tạo đối tượng Product
@@ -115,8 +119,9 @@ class ProductsController extends BaseController{
         $product->price = $price;
         $product->quantity = $quantity;
         $product->description = $description;
-        $product->category  = $category;
         $product->category_id  = $category_id;
+        $product->image_url = $image_url;
+
         // Lưu đối tượng vào database
         $storedSuccessful = $product->save();
 

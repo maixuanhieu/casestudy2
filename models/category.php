@@ -25,4 +25,18 @@ class Category{
     
         return $list;
     }
+
+    static function find($id){
+        $sql = "SELECT * FROM categories WHERE id = $id";
+
+        $smpt = DB::getInstance()->prepare($sql);
+        $smpt->execute();
+
+        $rawData = $smpt->fetch();
+
+        $category = new Category();
+        $category->id = $rawData["id"];
+        $category->name = $rawData["name"];
+        return $category;
+    }
 }

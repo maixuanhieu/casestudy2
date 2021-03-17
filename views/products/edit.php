@@ -34,19 +34,38 @@
 
             <div class="form-group">
                 <label for="exampleFormControlInput1">Price</label>
-                <input type="number" class="form-control" name="cost_price" id="exampleFormControlInput1" placeholder="USD" value="<?php echo $product->price ?>" />
+                <input type="number" class="form-control" name="price" id="exampleFormControlInput1" placeholder="USD" value="<?php echo $product->price ?>" />
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlInput1">Quantity</label>
-                <input type="number" class="form-control" name="sell_price" id="exampleFormControlInput1" placeholder="" value="<?php echo $product->quantity ?>" />
+                <input type="number" class="form-control" name="quantity" id="exampleFormControlInput1" placeholder="" value="<?php echo $product->quantity ?>" />
             </div>
         </div>
+
+        <div class="col-md-5">
+        <div id="choose-avatar" style="height: 344px">
+          <button
+            type="button"
+            onclick="input_avatar.click()"
+            class="btn btn-sm btn-light"
+          >
+            Choose image
+          </button>
+          <input id="input_avatar" type="file" name="image_url" hidden="" />
+          <input type="image" id="avatar_preview" 
+          src="<?php echo $product->image_url ?>" />
+
+          <input id="avatar_url" name="image_url" type="text" hidden
+              value="<?php echo $product->image_url ?>"
+           />
+        </div>
+      </div>
     </div>
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Description</label>
 
-        <textarea class="form-control" placeholder="Some information..." name="description" id="exampleFormControlTextarea1" rows="3"><?php echo $product->description ?>
+        <textarea class="form-control" placeholder="Some information..." name="description" id="exampleFormControlTextarea1" rows="3"><?php  echo $product->description ?>
      </textarea>
     </div>
 
@@ -58,6 +77,7 @@
 </form>
 
 <script src="/assets/scripts/script.js"></script>
+
 
 <script>
     const leftFormCol = document.querySelector("#left_form_col");

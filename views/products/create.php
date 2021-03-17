@@ -24,7 +24,7 @@
 
           <?php
           foreach ($categories as $category) {
-            echo "<option value=$category->id</option>>$category->name</option>";
+            echo "<option value=$category->id>$category->name</option>";
           }
           ?>
         </select>

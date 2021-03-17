@@ -1,3 +1,5 @@
+
+
 <table class="table">
   <thead class="thead">
     <tr>
@@ -17,7 +19,7 @@
       <th class="align-middle" scope="row">'.$no.'</th>
       <td class="align-middle">'.$product->name.'</td>
       <td class="align-middle text-right pr-5">'.number_format($product->price, 2).'</td>
-      <td class="align-middle text-right pr-5">'.number_format($product->quantity, 2).'</td>
+      <td class="align-middle text-right pr-5">'.number_format($product->quantity, 0).'</td>
       <td class="align-middle">'.$product->category.'</td>
       <td class="align-middle text-center">
         <a type="submit" class="btn btn-link" href="?controller=products&action=edit&id='.$product->id.'">Change</a>
