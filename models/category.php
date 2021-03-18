@@ -1,10 +1,12 @@
 <?php
 
-class Category{
+class Category
+{
     public $id;
     public $name;
 
-    static function all(){
+    static function all()
+    {
         $sql = "SELECT * FROM categories";
 
         $smpt = DB::getInstance()->prepare($sql);
@@ -15,18 +17,19 @@ class Category{
 
         $list = [];
 
-        foreach($rawData as $row){
+        foreach ($rawData as $row) {
             $entity = new Category();
             $entity->id = $row["id"];
             $entity->name = $row["name"];
 
             $list[] = $entity;
         }
-    
+
         return $list;
     }
 
-    static function find($id){
+    static function find($id)
+    {
         $sql = "SELECT * FROM categories WHERE id = $id";
 
         $smpt = DB::getInstance()->prepare($sql);
@@ -40,7 +43,8 @@ class Category{
         return $category;
     }
 
-    public function save() {
+    public function save()
+    {
         $sql = "INSERT INTO categories(
              name
             )
@@ -54,14 +58,15 @@ class Category{
 
             $this->name,
 
-          
+
             $this->name,
         ]);
     }
 
-        public function destroy() {
-            $db = DB::getInstance();
-            $req = $db->prepare("DELETE FROM categories WHERE id = $this->id");
-            $req->execute();
+    public function destroy()
+    {
+        $db = DB::getInstance();
+        $req = $db->prepare("DELETE FROM categories WHERE id = $this->id");
+        $req->execute();
     }
 }

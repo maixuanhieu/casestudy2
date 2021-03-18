@@ -27,19 +27,37 @@ class ShopController extends BaseController {
 
     public function addToCart() {
         if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $productId = $_GET["id"];
+            $id = $_GET["id"];
 
-            $product = Product::find($productId);
+            $product = Product::find($id);
 
             $cart = new Cart();
 
             $cart->addToCart($product);
+      
 
             echo "
             <script type='text/javascript'>
                 window.history.go(-1);
             </script>
             ";
+        }
+    }
+
+    public function delete()
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            // Lấy được id phần tử từ URL
+            $id = $_GET["id"];
+          
+            // Lấy được phần tử từ CSDL
+            $cart =  new Cart;
+
+            // Xóa phần tử khỏi CSDL
+            $cart->destroy($id);
+
+            // Điều hướng về trang danh sách
+            header("Location:?controller=shop&action=cartPage"); 
         }
     }
 }

@@ -35,7 +35,7 @@ class CategoriesController extends BaseController
 
             // Lấy được phần tử từ CSDL
             $category =  Category::find($id);
-            // var_dump($category);die();
+
             // Xóa phần tử khỏi CSDL
             $category->destroy();
 

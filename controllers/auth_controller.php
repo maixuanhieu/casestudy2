@@ -33,7 +33,7 @@ class AuthController extends BaseController {
         // Lấy được thông tin đăng nhập từ client request
         $email = $_POST["email"];
         $password = $_POST["password"];
-        // var_dump($email);die();
+
 
         // Kiểm tra email và mật khẩu có hợp lệ hay không
         // Tìm người dùng với email và mật khẩu trên

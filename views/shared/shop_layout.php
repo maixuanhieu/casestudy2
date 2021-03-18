@@ -23,14 +23,10 @@ require_once('models/cart.php');
             <a class="navbar-brand" href="?controller=home&action=welcome">
                 <img src="/Image/s1team-re.jpg" alt="" width="50" height="50">
             </a>
-            <!-- <a class="navbar-brand" href="?controller=shop&action=index">
-                <img src="/Image/s1team-re.jpg" alt="" width="50" height="50">
-            </a> -->
-
+        
             <a href="?controller=shop&action=cartPage" type="button" class="btn btn-warning">Your Cart (<?php echo Cart::countItems() ?>)</a>
         </div>
     </nav>
-
     <div class="container">
         <?php echo $content ?>
     </div>

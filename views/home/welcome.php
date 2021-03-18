@@ -307,7 +307,7 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
+                    <div class="carousel-item active" >
                         <img class="d-block w-100" src="Image/cyberpunk-2077.jpg" alt="First slide">
                     </div>
                     <div class="carousel-item">
